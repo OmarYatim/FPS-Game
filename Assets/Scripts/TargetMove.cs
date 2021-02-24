@@ -2,30 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-
-[CustomEditor(typeof(TargetMove))]
-public class TargetMoveGUI : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        var myScript = target as TargetMove;
-
-        myScript.CanMove = GUILayout.Toggle(myScript.CanMove, "Can Move");
-        if(myScript.CanMove)
-        {
-            myScript.MoveDistance = EditorGUILayout.Slider("Move Distance",myScript.MoveDistance, 1, 25);
-            myScript.Speed = EditorGUILayout.FloatField("Speed",myScript.Speed);
-        }
-    }
-}
-#endif
 public class TargetMove : MonoBehaviour
 {
-    [HideInInspector] public bool CanMove;
-    [HideInInspector] public float MoveDistance = 10;
-    [HideInInspector] public float Speed = 5.0f;
+    [SerializeField] private bool CanMove;
+    [SerializeField] private float MoveDistance;
+    [SerializeField] private float Speed;
 
     private Vector3 InitialPosition;
     Vector3 MoveDirection = Vector3.right;
@@ -48,6 +29,7 @@ public class TargetMove : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, InitialPosition);
             distance = Mathf.Floor(distance);
+            Debug.Log(distance, gameObject);
 
             if (distance >= Mathf.Floor(MoveDistance))
             {
