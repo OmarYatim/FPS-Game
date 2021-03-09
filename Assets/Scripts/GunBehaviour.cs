@@ -248,7 +248,7 @@ public class GunBehaviour : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                var Impact = Instantiate(ImpactPrefab, hit.point + (hit.normal.normalized * 0.03f), Quaternion.LookRotation(hit.normal));
+                var Impact = Instantiate(ImpactPrefab, hit.point + (hit.normal.normalized * 0.05f), Quaternion.LookRotation(hit.normal));
                 Impact.transform.parent = hit.transform;
                 if(hit.collider.tag == "Target")
                 {

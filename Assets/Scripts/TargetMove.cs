@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+
+public class MoveEditor : Editor
+{
+
+}
 
 public class TargetMove : MonoBehaviour
 {
-    [SerializeField] private bool CanMove;
-    [SerializeField] private float MoveDistance;
-    [SerializeField] private float Speed;
+    /*[HideInInspector]*/ public bool CanMove;
+    /*[HideInInspector]*/ public float MoveDistance;
+    /*[HideInInspector]*/ public float Speed;
 
     private Vector3 InitialPosition;
     Vector3 MoveDirection = Vector3.right;
